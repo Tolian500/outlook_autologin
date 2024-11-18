@@ -1,20 +1,14 @@
-import os
-from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
-# from tags import tags
-import time
 import os
 import time
-import json
-from datetime import datetime
+
 
 load_dotenv()
 
-login_page = "https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=165&ct=1731492304&rver=7.5.2211.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26cobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26culture%3dpl-pl%26country%3dpl%26RpsCsrfState%3d8f6f176e-e6b9-4cf8-349a-42e14882c4f3&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c"
+login_page = "https://login.live.com/login.srf?wa=wsignin1.0&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f&aadredir=1"
 email = os.environ["EMAIL"]
 password = os.environ["PASSWORD"]
 
@@ -41,3 +35,6 @@ email_input.send_keys(email, Keys.ENTER)
 time.sleep(2)
 pass_input = driver.find_element(By.NAME, 'passwd')
 pass_input.send_keys(password, Keys.ENTER)
+
+# Add a prompt to keep the browser open
+input("Press Enter to close the browser...")
